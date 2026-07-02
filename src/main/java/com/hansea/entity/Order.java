@@ -26,7 +26,7 @@ public class Order {
     @Embedded
     private Address deliveryAddress;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "order")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "order")
     private List<OrderItem> items;
 
     @ManyToOne

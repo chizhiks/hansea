@@ -30,7 +30,7 @@ public class Product {
     @Column(nullable = false)
     private Integer stockQuantity;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "product")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "product")
     private List<ProductImage> images;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")

@@ -29,7 +29,7 @@ public class User {
     @Builder.Default
     private Role role = Role.ROLE_CUSTOMER;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user")
     private UserProfile userProfile;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
@@ -38,6 +38,6 @@ public class User {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "seller")
     private List<Product> products;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user")
     private List<RefreshToken> refreshTokens;
 }
