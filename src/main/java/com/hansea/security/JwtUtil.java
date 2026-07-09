@@ -35,12 +35,12 @@ public class JwtUtil {
         return UUID.randomUUID().toString();
     }
 
-    public boolean isValidToken(String token, UserDetails userDetails) {
-        String tokenUsername = getUsernameFromToken(token);
+    public boolean isTokenValid(String token, UserDetails userDetails) {
+        String tokenUsername = extractUsername(token);
         return (tokenUsername.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
-    public String getUsernameFromToken(String token) {
+    public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
     }
 
